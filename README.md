@@ -14,7 +14,7 @@ It's one service and a TCP proxy. There's no database and no volume.
 
 ## Common Use Cases
 
-- Watch parties: stream a movie, a match or YouTube to friends in different places, with everyone in sync and voice/chat alongside
+- Watch parties: stream a movie, a match or a video to friends in different places, with everyone in sync and voice/chat alongside
 - Co-browsing: walk a client or colleague through a site, or shop and plan a trip together, passing control back and forth
 - A disposable, isolated browser in the cloud for testing sites or opening links you don't trust on your own machine
 
@@ -34,11 +34,13 @@ It's one service and a TCP proxy. There's no database and no volume.
 
 **Take control.** Click the keyboard icon under the video to request control. The current driver (or an admin) can hand it over. Unmute the video in your browser to hear the sound.
 
-**Plan and resources.** Neko needs about 1 GB of RAM and a full vCPU while it streams, so it needs Railway's Hobby plan or above. It won't fit the Free or Trial plan limits. Raise `NEKO_DESKTOP_SCREEN` to `1920x1080@30` for a sharper picture at the cost of more CPU.
+**Plan and resources.** Neko needs about 1 to 1.25 GB of RAM and around a vCPU while it streams video, so it needs Railway's Hobby plan or above. It won't fit the Free or Trial plan limits. There's no GPU, so 3D/WebGL pages render in software and can use 4 to 8 vCPU. Raise `NEKO_DESKTOP_SCREEN` to `1920x1080@30` for a sharper picture at the cost of more CPU.
 
-**Bandwidth costs.** Railway bills outbound traffic per GB, and each viewer gets their own stream. EGRESS_LINE
+**Bandwidth costs.** Railway bills outbound traffic per GB, and each viewer gets their own stream. A movie at the default 1280x720@30 measured about 2.3 Mbps of video plus 128 kbps of audio per viewer. That's roughly 1.1 GB per viewer per hour, so four friends watching a two-hour film comes to about 9 GB. A page that isn't moving costs far less.
 
 **Nothing is kept.** There's no volume. Every redeploy starts a fresh browser with no history, logins or cookies. That's the point for a watch party or a throwaway browser. Don't use it to stay logged in to accounts you care about.
+
+**Sites that block cloud IPs.** The browser runs on a datacenter IP, so YouTube and some other sites may ask you to sign in to prove you're not a bot. Signing in inside the browser usually gets you through. The session is lost on the next redeploy.
 
 **Latency.** Media goes over TCP to Railway's proxy, so the picture runs a fraction of a second behind and can stutter on a lossy network. It's fine for watching and browsing, but not for gaming.
 
