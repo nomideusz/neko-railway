@@ -1,0 +1,12 @@
+#!/bin/sh
+set -e
+: "${RAILWAY_TCP_PROXY_DOMAIN:?add a TCP proxy to this service}"
+IP=$(getent ahostsv4 "$RAILWAY_TCP_PROXY_DOMAIN" | awk 'NR==1{print $1}')
+[ -n "$IP" ] || { echo "cannot resolve $RAILWAY_TCP_PROXY_DOMAIN"; exit 1; }
+export NEKO_WEBRTC_TCPMUX="$RAILWAY_TCP_PROXY_PORT" NEKO_WEBRTC_NAT1TO1="$IP"
+# pion's TCP mux keys connections by the local IP they arrive on, so forward to
+# the interface address the ICE candidate was gathered from, not 127.0.0.1.
+LOCAL=$(hostname -I | tr ' ' '\n' | grep -v : | head -1)
+echo "WebRTC: ICE-TCP $IP:$RAILWAY_TCP_PROXY_PORT <- :$RAILWAY_TCP_APPLICATION_PORT -> $LOCAL"
+socat TCP-LISTEN:"$RAILWAY_TCP_APPLICATION_PORT",fork,reuseaddr TCP:"$LOCAL":"$RAILWAY_TCP_PROXY_PORT" &
+exec /usr/bin/supervisord -c /etc/neko/supervisord.conf
