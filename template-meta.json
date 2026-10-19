@@ -3,7 +3,7 @@
   "short_name": "Neko",
   "description": "Self-hosted shared browser: watch together, co-browse, with audio. WebRTC.",
   "category": "Other",
-  "image": "https://raw.githubusercontent.com/nomideusz/neko-railway/main/icon.png",
+  "image": "https://raw.githubusercontent.com/two-workspaces/neko/main/icon.png",
   "id": "6572134b-b1f7-4b5b-a426-77bcc982a816",
   "published": true
 }

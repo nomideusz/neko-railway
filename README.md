@@ -26,7 +26,7 @@ It's one service and a TCP proxy. There's no database and no volume.
 
 - [Neko on GitHub](https://github.com/m1k1o/neko)
 - [Neko documentation](https://neko.m1k1o.net/docs/v3/introduction)
-- [Template source on GitHub](https://github.com/nomideusz/neko-railway)
+- [Template source on GitHub](https://github.com/two-workspaces/neko)
 
 ### Implementation Details
 
