@@ -1,6 +1,6 @@
 # Any neko v3 app image works: firefox, chromium, brave, google-chrome,
 # microsoft-edge, vivaldi, tor-browser, xfce, kde, vlc, ...
-ARG NEKO_IMAGE=ghcr.io/m1k1o/neko/firefox:3.1.6
+ARG NEKO_IMAGE=ghcr.io/m1k1o/neko/firefox:3.2.0
 FROM ${NEKO_IMAGE}
 
 # ponytail: Railway has no public UDP, so WebRTC rides one ICE-TCP port through

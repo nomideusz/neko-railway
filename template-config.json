@@ -29,7 +29,7 @@
      "description": "Admin password: same login, but can take control from anyone, kick and lock the room. Keep it to yourself."
     },
     "NEKO_IMAGE": {
-     "defaultValue": "ghcr.io/m1k1o/neko/firefox:3.1.6",
+     "defaultValue": "ghcr.io/m1k1o/neko/firefox:3.2.0",
      "isOptional": false,
      "description": "The app to stream. Swap firefox for chromium, brave, google-chrome, microsoft-edge, vivaldi, tor-browser, xfce, kde or vlc and redeploy."
     },
